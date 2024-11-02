@@ -83,7 +83,7 @@ document.querySelector(".add-btn").addEventListener("click", () => {
     const taskInput = document.createElement("input");
     taskInput.type = "text";
     taskInput.classList.add("task-input");
-    taskInput.placeholder = "Nova tarefa";
+    taskInput.placeholder = "Escreva sua tarefa aqui...";
 
     const removeBtn = document.createElement("button");
     removeBtn.innerText = "Remover";
