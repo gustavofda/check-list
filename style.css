@@ -20,6 +20,7 @@ h1 {
 }
 
 body {
+    background-image: url('img/background-fundo.jpg');
     background-color: var(--background-color);
     color: var(--text-color);
     font-family: Arial, sans-serif;
