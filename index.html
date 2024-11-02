@@ -11,9 +11,10 @@
         <div class="header">
             <!-- Botão para alternar o modo de tema -->
             <div class="toggle-btn">
-                <button onclick="toggleTheme()">
-                    <img src=img/darkmode.png alt="Toggle theme" class="theme-icon">
-                </button>
+                <label class="switch">
+                    <input type="checkbox" id="theme-toggle" onchange="toggleTheme()">
+                    <span class="slider"></span>
+                </label>
             </div>
             <h1>Minha Web Check List</h1>
             <div class="icon"></div>
@@ -22,7 +23,6 @@
         <div class="checklist">
             <!-- Itens da checklist -->
             <div class="item"><input type="checkbox"><input type="text" placeholder="Escreva sua tarefa aqui" class="task-input"></div>
-            
         </div>
     </div>
     <script src="script.js"></script>

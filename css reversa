@@ -171,10 +171,7 @@ input:checked + .slider:before {
     margin-bottom: 10px;
 }
 
-/* Estilo personalizado para o checkbox */
 .checklist input[type="checkbox"] {
-    appearance: none; /* Remove o estilo padrão */
-    -webkit-appearance: none; /* Compatibilidade com navegadores Webkit */
     width: 20px;
     height: 20px;
     margin-right: 10px;
@@ -184,20 +181,8 @@ input:checked + .slider:before {
     transition: background-color 0.3s;
 }
 
-/* Estilo quando o checkbox está marcado */
 .checklist input[type="checkbox"]:checked {
-    background-color: var(--checked-color);
-    border-color: var(--checked-color);
-}
-
-/* Ícone de seleção para o checkbox marcado */
-.checklist input[type="checkbox"]:checked::after {
-    content: "✔";
-    color: white;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background-color: var(--checked-color); /* Cor de fundo quando o checkbox está marcado */
 }
 
 .task-input {
