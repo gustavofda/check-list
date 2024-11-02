@@ -335,6 +335,21 @@ body.dark-mode .task-input {
     }
 }
 
+.add-btn {
+    padding: 10px;
+    font-size: 24px; /* Tamanho do texto */
+    color: #fff; /* Cor do texto */
+    background-color: #D2691E; /* Cor do fundo */
+    border: none; /* Remove a borda padrão */
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer; /* Muda o cursor ao passar o mouse */
+    margin-top: 10px; /* Espaçamento acima do botão */
+}
+
+.add-btn:hover {
+    background-color: #b45d15; /* Cor do fundo ao passar o mouse */
+}
+
 @media (max-width: 480px) {
     .switch {
         width: 50px;

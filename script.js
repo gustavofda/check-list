@@ -45,3 +45,28 @@ function loadTasks() {
         });
     }
 }
+
+// Função para adicionar uma nova tarefa
+function addTask() {
+    // Cria um novo div para a nova tarefa
+    const newItem = document.createElement('div');
+    newItem.classList.add('item'); // Adiciona a classe 'item' para estilização
+
+    // Cria o checkbox
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+
+    // Cria a caixa de texto
+    const taskInput = document.createElement('input');
+    taskInput.type = 'text';
+    taskInput.placeholder = 'Escreva sua tarefa aqui';
+    taskInput.classList.add('task-input'); // Adiciona a classe 'task-input'
+
+    // Adiciona o checkbox e a caixa de texto ao novo div
+    newItem.appendChild(checkbox);
+    newItem.appendChild(taskInput);
+
+    // Adiciona o novo item à checklist
+    document.querySelector('.checklist').appendChild(newItem);
+}
+
