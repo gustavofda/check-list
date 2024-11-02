@@ -229,3 +229,59 @@ body.dark-mode .task-input {
     background-color: #555; /* Fundo da caixa de texto no modo escuro */
     color: white; /* Cor do texto na caixa de texto no modo escuro */
 }
+
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+        max-width: 90%;
+    }
+    
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .save-btn {
+        padding: 1rem 2rem;
+        font-size: 0.6rem;
+        letter-spacing: 0.2rem;
+    }
+    
+    .checklist .item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .task-input {
+        width: 100%;
+        margin-top: 8px;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .switch {
+        width: 50px;
+        height: 28px;
+    }
+    
+    .slider:before {
+        height: 22px;
+        width: 22px;
+    }
+    
+    .save-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.55rem;
+    }
+    
+    .task-input {
+        padding: 6px;
+    }
+}
