@@ -61,11 +61,18 @@ footer {
 
 .footer__contact {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
     text-align: center;
     margin-bottom: 20px;
     font-size: 0.9rem;
+}
+
+.footer__contact img {
+    max-width: 100%;
+    height: auto;
+    margin: 0 5px;
 }
 
 ul {
@@ -81,6 +88,11 @@ ul {
     font-size: 0.8rem;
     color: var(--text-color);
     margin-top: 10px;
+}
+
+body.dark-mode footer {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: var(--text-color);
 }
 
 .toggle-btn {
@@ -135,22 +147,30 @@ input:checked + .slider:before {
 
 .save-btn {
     padding: 1.2rem 2.5rem;
-    border: 2px solid #ffffff;
+    border: none; /* Sem bordas no modo claro */
     color: white;
     font-size: 0.6875rem;
     font-weight: 700;
     letter-spacing: 0.3rem;
     position: relative;
-    background-color: #333;
-    transition: all 1000ms cubic-bezier(0.890, -0.170, 0.140, 1.225);
-    overflow: hidden;
+    background-color: #333; /* Cor padrão para todas as telas */
+    cursor: pointer;
+    margin-left: 10px;
+    border-radius: 10px;
+    overflow: hidden; /* Para que o ::before e ::after fiquem contidos */
+    transition: background-color 0.5s ease, transform 0.3s ease; /* Transições */
+}
+
+body.dark-mode .save-btn {
+    border: 2px solid white; /* Borda branca no modo escuro */
+    background-color: var(--text-color); /* Cor do h1 */
 }
 
 .save-btn::before {
     content: '';
     height: 1px;
     width: 60px;
-    background-color: #D2691E;
+    background-color: #D2691E; /* Cor da linha */
     position: absolute;
     margin-top: 6px;
     right: -35px;
@@ -161,67 +181,82 @@ input:checked + .slider:before {
     width: 130%;
 }
 
+.save-btn:hover {
+    transform: translateX(0); /* Remove o movimento ao passar o mouse */
+}
+
+.add-btn {
+    font-size: 30px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
 .checklist .item {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+    border: 2px solid var(--text-color);
+    border-radius: 5px;
+    padding: 10px;
+    gap: 10px;
 }
 
 .checklist input[type="checkbox"] {
     appearance: none;
-    -webkit-appearance: none;
     width: 20px;
     height: 20px;
     margin-right: 10px;
     border: 2px solid var(--box-color);
     border-radius: 3px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    position: relative;
+    background-color: white;
 }
 
 .checklist input[type="checkbox"]:checked {
     background-color: var(--checked-color);
-    border-color: var(--checked-color);
 }
 
 .checklist input[type="checkbox"]:checked::after {
     content: "✔";
     color: white;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-size: 16px;
+    position: absolute;
+    left: 4px;
+    top: -1px;
 }
 
 .task-input {
-    flex-grow: 1;
+    flex: 1;
     border: none;
-    border-bottom: 2px solid var(--box-color);
-    padding: 8px;
-    background: none;
     outline: none;
-    transition: border-color 0.3s;
+    background-color: var(--background-color); /* Adicionando a cor de fundo */
+    color: var(--text-color); /* Mudando a cor do texto */
 }
 
-body.dark-mode .container {
-    background-color: var(--dark-background-color);
-    color: var(--text-color);
-}
-
-body.dark-mode .save-btn {
-    background-color: #D2691E;
-}
-
-body.dark-mode .checklist input[type="checkbox"] {
-    background-color: var(--checked-color);
-}
-
+/* Mudança para modo dark */
 body.dark-mode .task-input {
-    border-bottom-color: var(--checked-color);
-    background-color: #555;
-    color: white;
+    background-color: #555; /* Cor de fundo escura */
+    color: white; /* Cor do texto em branco */
 }
 
+.remove-btn {
+    background-color: #D2691E;
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: auto; /* Para manter o botão à esquerda */
+}
+
+.remove-btn:hover {
+    background-color: rgba(211, 105, 30, 0.7);
+}
+
+/* Media Queries para Responsividade */
 @media (max-width: 768px) {
     .footer__contact {
         font-size: 0.8rem;
@@ -229,6 +264,37 @@ body.dark-mode .task-input {
 
     ul {
         gap: 10px;
+    }
+
+    .container {
+        padding: 15px;
+        max-width: 90%;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .save-btn {
+        padding: 1rem 2rem;
+        font-size: 0.6rem;
+        letter-spacing: 0.2rem;
+    }
+
+    .checklist .item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .task-input {
+        width: 100%;
+        margin-top: 8px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+        text-align: center;
     }
 }
 
@@ -245,89 +311,32 @@ body.dark-mode .task-input {
     .footer__copyright {
         font-size: 0.7rem;
     }
-}
 
-@media (max-width: 768px) {
-    .container {
-        padding: 15px;
-        max-width: 90%;
-    }
-    
-    .header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    .save-btn {
-        padding: 1rem 2rem;
-        font-size: 0.6rem;
-        letter-spacing: 0.2rem;
-    }
-    
-    .checklist .item {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    .task-input {
-        width: 100%;
-        margin-top: 8px;
-    }
-    
-    h1 {
-        font-size: 1.5rem;
-        text-align: center;
-    }
-}
-
-.add-btn {
-    padding: 10px;
-    font-size: 24px;
-    color: #fff;
-    background-color: #D2691E;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-.add-btn:hover {
-    background-color: #b45d15;
-}
-
-.remove-btn {
-    padding: 6px; /* Ajuste o valor do padding aqui */
-    font-size: 16px; /* Ajuste o tamanho da fonte se necessário */
-    color: #fff;
-    background-color: #D2691E;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-left: 10px; /* Adicionando uma margem para separar do botão "Add" */
-}
-
-.remove-btn:hover {
-    background-color: #b45d15;
-}
-
-@media (max-width: 480px) {
     .switch {
         width: 50px;
         height: 28px;
     }
-    
+
     .slider:before {
         height: 22px;
         width: 22px;
     }
-    
-    .save-btn {
-        padding: 0.8rem 1.5rem;
-        font-size: 0.55rem;
-    }
-    
+
     .task-input {
         padding: 6px;
+        font-family: "Noto Sans"
+    }
+
+    .add-btn {
+        padding: 10px;
+        font-size: 24px;
+        color: #fff;
+        background-color: #D2691E;
+        border: none;
+        border-radius: 5px;
+    }
+
+    .remove-btn {
+        font-size: 0.8rem;
     }
 }
-
