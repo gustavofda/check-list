@@ -1,6 +1,8 @@
+const toggle = document.getElementById('themeToggle');
+const body = document.body;
+
 // Alterna entre modos claro e escuro
 function toggleTheme() {
-    const body = document.body;
     if (body.classList.contains("dark-mode")) {
         body.classList.remove("dark-mode");
         localStorage.setItem("theme", "light");
@@ -13,10 +15,16 @@ function toggleTheme() {
 // Verifica e aplica o tema salvo no localStorage ao carregar
 document.addEventListener("DOMContentLoaded", () => {
     if (localStorage.getItem("theme") === "dark") {
-        document.body.classList.add("dark-mode");
+        body.classList.add("dark-mode");
+        if (toggle) toggle.checked = true; // Certifique-se de que o toggle esteja no estado correto
     }
     loadTasks();
 });
+
+// Adiciona evento de mudança ao toggle
+if (toggle) {
+    toggle.addEventListener('change', toggleTheme);
+}
 
 // Salva as tarefas no Local Storage
 function saveTasks() {
