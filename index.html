@@ -20,11 +20,12 @@
             <div class="icon"></div>
             <button class="save-btn" onclick="saveTasks()">Salvar Tarefas</button>
         </div>
-        <div class="checklist">
+        <div class="checklist" id="checklist">
             <!-- Itens da checklist -->
             <div class="item">
                 <input type="checkbox">
                 <input type="text" placeholder="Escreva sua tarefa aqui" class="task-input">
+                <button class="remove-btn" onclick="removeTask(this)">Remover</button>
             </div>
         </div>
         <button class="add-btn" onclick="addTask()">+</button>

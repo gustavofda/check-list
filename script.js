@@ -22,51 +22,75 @@ document.addEventListener("DOMContentLoaded", () => {
 function saveTasks() {
     const tasks = [];
     const taskInputs = document.querySelectorAll(".task-input");
-
     taskInputs.forEach(input => {
-        tasks.push(input.value);
+        if (input.value.trim()) {
+            tasks.push(input.value.trim());
+        }
     });
-
     localStorage.setItem("tasks", JSON.stringify(tasks));
-    alert("Tarefas salvas com sucesso!");
 }
 
 // Carrega as tarefas do Local Storage
 function loadTasks() {
-    const tasks = JSON.parse(localStorage.getItem("tasks"));
+    const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    const checklist = document.querySelector(".checklist");
+    checklist.innerHTML = ""; // Limpa a lista existente
 
-    if (tasks) {
-        const checklist = document.querySelector(".checklist");
-        tasks.forEach(task => {
-            const item = document.createElement("div");
-            item.classList.add("item");
-            item.innerHTML = `<input type="checkbox"><input type="text" placeholder="Escreva sua tarefa aqui" class="task-input" value="${task}">`;
-            checklist.appendChild(item);
-        });
-    }
+    tasks.forEach(task => {
+        const taskItem = document.createElement("div");
+        taskItem.classList.add("item");
+
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+
+        const taskInput = document.createElement("input");
+        taskInput.type = "text";
+        taskInput.classList.add("task-input");
+        taskInput.value = task;
+
+        const removeBtn = document.createElement("button");
+        removeBtn.innerText = "Remover";
+        removeBtn.classList.add("remove-btn");
+        removeBtn.onclick = () => {
+            taskItem.remove();
+            saveTasks();
+        };
+
+        taskItem.appendChild(checkbox);
+        taskItem.appendChild(taskInput);
+        taskItem.appendChild(removeBtn);
+        checklist.appendChild(taskItem);
+    });
 }
 
-// Função para adicionar uma nova tarefa
-function addTask() {
-    // Cria um novo div para a nova tarefa
-    const newItem = document.createElement('div');
-    newItem.classList.add('item'); // Adiciona a classe 'item' para estilização
+// Adiciona uma nova tarefa
+document.querySelector(".add-btn").addEventListener("click", () => {
+    const checklist = document.querySelector(".checklist");
+    const taskItem = document.createElement("div");
+    taskItem.classList.add("item");
 
-    // Cria o checkbox
-    const checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
 
-    // Cria a caixa de texto
-    const taskInput = document.createElement('input');
-    taskInput.type = 'text';
-    taskInput.placeholder = 'Escreva sua tarefa aqui';
-    taskInput.classList.add('task-input'); // Adiciona a classe 'task-input'
+    const taskInput = document.createElement("input");
+    taskInput.type = "text";
+    taskInput.classList.add("task-input");
+    taskInput.placeholder = "Nova tarefa";
 
-    // Adiciona o checkbox e a caixa de texto ao novo div
-    newItem.appendChild(checkbox);
-    newItem.appendChild(taskInput);
+    const removeBtn = document.createElement("button");
+    removeBtn.innerText = "Remover";
+    removeBtn.classList.add("remove-btn");
+    removeBtn.onclick = () => {
+        taskItem.remove();
+        saveTasks();
+    };
 
-    // Adiciona o novo item à checklist
-    document.querySelector('.checklist').appendChild(newItem);
-}
+    taskItem.appendChild(checkbox);
+    taskItem.appendChild(taskInput);
+    taskItem.appendChild(removeBtn);
+    checklist.appendChild(taskItem);
+    saveTasks(); // Salva imediatamente após adicionar a nova tarefa
+});
 
+// Salva as tarefas quando o input de tarefa for alterado
+document.querySelector(".checklist").addEventListener("input", saveTasks);
