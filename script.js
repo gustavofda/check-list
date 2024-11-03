@@ -16,9 +16,11 @@ function toggleTheme() {
 document.addEventListener("DOMContentLoaded", () => {
     if (localStorage.getItem("theme") === "dark") {
         body.classList.add("dark-mode");
-        if (toggle) toggle.checked = true; // Certifique-se de que o toggle esteja no estado correto
+        if (toggle) toggle.checked = true; // Certifique-se de que o toggle esteja no estado correto (ativo)
+    } else {
+        if (toggle) toggle.checked = false; // Certifique-se de que o toggle esteja desmarcado no tema claro
     }
-    loadTasks();
+    loadTasks(); // Carrega as tarefas, se necessário
 });
 
 // Adiciona evento de mudança ao toggle
