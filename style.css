@@ -76,7 +76,7 @@ footer {
 }
 
 .footer__contact img {
-    max-width: 100%;
+    max-width: 30%; /* Ajustando para caber melhor em telas menores */
     height: auto;
     margin: 0 5px;
 }
@@ -266,6 +266,13 @@ body.dark-mode .task-input {
 @media (max-width: 768px) {
     .footer__contact {
         font-size: 0.8rem;
+        flex-wrap: wrap; /* Permite que as imagens se empilhem em telas menores */
+    }
+
+    .footer__contact img {
+        max-width: 45%; /* Ajustando o tamanho das imagens */
+        height: auto;
+        margin: 5px; /* Adiciona espaço entre as imagens */
     }
 
     ul {
@@ -282,6 +289,13 @@ body.dark-mode .task-input {
         align-items: flex-start;
     }
 
+    h1 {
+        font-size: 1.5rem;
+        text-align: center;
+        margin: 0 auto; /* Centraliza o título */
+        width: 100%; /* Garante que o título não ultrapasse a largura */
+    }
+
     .save-btn {
         padding: 1rem 2rem;
         font-size: 0.6rem;
@@ -296,11 +310,6 @@ body.dark-mode .task-input {
     .task-input {
         width: 100%;
         margin-top: 8px;
-    }
-
-    h1 {
-        font-size: 1.5rem;
-        text-align: center;
     }
 }
 
@@ -319,30 +328,18 @@ body.dark-mode .task-input {
     }
 
     .switch {
-        width: 50px;
+        width: 50px; /* Reduz o tamanho do switch */
         height: 28px;
+    }
+
+    .slider {
+        border-radius: 28px;
     }
 
     .slider:before {
         height: 22px;
         width: 22px;
-    }
-
-    .task-input {
-        padding: 6px;
-        font-family: "Noto Sans"
-    }
-
-    .add-btn {
-        padding: 10px;
-        font-size: 24px;
-        color: #fff;
-        background-color: #D2691E;
-        border: none;
-        border-radius: 5px;
-    }
-
-    .remove-btn {
-        font-size: 0.8rem;
+        left: 3px;
+        bottom: 3px;
     }
 }
