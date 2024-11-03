@@ -1,4 +1,4 @@
-const toggle = document.getElementById('themeToggle');
+const toggle = document.getElementById('theme-toggle'); // Corrigido para 'theme-toggle'
 const body = document.body;
 
 // Alterna entre modos claro e escuro
@@ -16,17 +16,12 @@ function toggleTheme() {
 document.addEventListener("DOMContentLoaded", () => {
     if (localStorage.getItem("theme") === "dark") {
         body.classList.add("dark-mode");
-        if (toggle) toggle.checked = true; // Certifique-se de que o toggle esteja no estado correto (ativo)
+        toggle.checked = true; // Atualizado para usar o ID correto
     } else {
-        if (toggle) toggle.checked = false; // Certifique-se de que o toggle esteja desmarcado no tema claro
+        toggle.checked = false; // Atualizado para usar o ID correto
     }
     loadTasks(); // Carrega as tarefas, se necessário
 });
-
-// Adiciona evento de mudança ao toggle
-if (toggle) {
-    toggle.addEventListener('change', toggleTheme);
-}
 
 // Salva as tarefas no Local Storage
 function saveTasks() {
@@ -74,7 +69,7 @@ function loadTasks() {
 }
 
 // Adiciona uma nova tarefa
-document.querySelector(".add-btn").addEventListener("click", () => {
+document.getElementById("add-btn").addEventListener("click", () => { // Corrigido para usar o ID do botão
     const checklist = document.querySelector(".checklist");
     const taskItem = document.createElement("div");
     taskItem.classList.add("item");
