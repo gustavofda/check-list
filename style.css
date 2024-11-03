@@ -47,6 +47,12 @@ body {
     margin-bottom: 20px;
 }
 
+.icon-svg {
+    max-width: 45px; /* Ajuste o tamanho máximo conforme necessário */
+    height: auto; /* Mantém a proporção da imagem */
+    margin-left: 10px; /* Espaço entre a imagem e o título */
+}
+
 footer {
     font-family: Noto Sans;
     background-color: rgba(255, 255, 255, 0.9);
