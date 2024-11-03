@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&display=swap');
+
+:root {
+    --background-color: #ffffff;
+    --dark-background-color: #1a1a1a;
+    --text-color: #333;
+    --box-color: #D2691E;
+    --checked-color: #D2691E;
+}
+
+.dark-mode {
+    --background-color: #333;
+    --text-color: #D2691E;
+    background-color: var(--dark-background-color);
+    color: var(--text-color);
+}

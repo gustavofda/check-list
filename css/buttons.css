@@ -1,0 +1,97 @@
+.toggle-btn {
+    display: flex;
+    align-items: center;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #D2691E;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.save-btn {
+    padding: 1.2rem 2.5rem;
+    border: none;
+    color: white;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.3rem;
+    position: relative;
+    background-color: #333;
+    cursor: pointer;
+    margin-left: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: background-color 0.5s ease, transform 0.3s ease;
+}
+
+body.dark-mode .save-btn {
+    border: 2px solid white;
+    background-color: var(--text-color);
+}
+
+.save-btn::before {
+    content: '';
+    height: 1px;
+    width: 60px;
+    background-color: #D2691E;
+    position: absolute;
+    margin-top: 6px;
+    right: -35px;
+    transition: all 1000ms cubic-bezier(0.890, -0.170, 0.140, 1.225);
+}
+
+.save-btn:hover::before {
+    width: 130%;
+}
+
+.save-btn:hover {
+    transform: translateX(0);
+}
+
+.add-btn {
+    font-size: 30px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: var(--text-color);
+}

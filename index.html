@@ -3,25 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <link rel="stylesheet" href="css/checklist.css">
+    <link rel="stylesheet" href="css/media-queries.css">
     <title>Minha Check List</title>
-    <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <!-- Botão para alternar o modo de tema -->
             <div class="toggle-btn">
                 <label class="switch">
                     <input type="checkbox" id="theme-toggle" onchange="toggleTheme()">
                     <span class="slider"></span>
                 </label>
             </div>
-            <img src="assets/svg/img-h1.svg" alt="Ícone" class="icon-svg"> <!-- Imagem adicionada -->
+            <img src="assets/svg/img-h1.svg" alt="Ícone" class="icon-svg">
             <h1>Minha Check List</h1>
             <button class="save-btn" onclick="saveTasks()">Salvar Tarefas</button>
         </div>
         <div class="checklist" id="checklist">
-            <!-- Itens da checklist -->
             <div class="item">
                 <input type="checkbox">
                 <input type="text" placeholder="Escreva sua tarefa aqui" class="task-input">
